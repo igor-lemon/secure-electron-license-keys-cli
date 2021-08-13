@@ -1,6 +1,6 @@
 {
-  "name": "secure-electron-license-keys-cli",
-  "version": "1.1.1",
+  "name": "@igor-lemon/secure-electron-license-keys-cli",
+  "version": "1.2.0",
   "description": "A CLI to create and offline license keys for your Electron apps.",
   "main": "lib/index.js",
   "bin": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reZach/secure-electron-license-keys-cli.git"
+    "url": "git+https://github.com/igor-lemon/secure-electron-license-keys-cli.git"
   },
   "keywords": [
     "electron",
@@ -21,9 +21,9 @@
   "author": "reZach",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/reZach/secure-electron-license-keys-cli/issues"
+    "url": "https://github.com/igor-lemon/secure-electron-license-keys-cli/issues"
   },
-  "homepage": "https://github.com/reZach/secure-electron-license-keys-cli#readme",
+  "homepage": "https://github.com/igor-lemon/secure-electron-license-keys-cli#readme",
   "devDependencies": {
     "@babel/cli": "^7.13.16",
     "@babel/core": "^7.13.16",
@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "arg": "^5.0.0",
-    "esm": "^3.2.25"
+    "esm": "^3.2.25",
+    "uuid": "^8.3.2"
   }
 }

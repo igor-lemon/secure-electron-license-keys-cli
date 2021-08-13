@@ -24,15 +24,17 @@ There are a number of options you can use to customize your license key generati
 
 |Arg|Shorthand|Default|Description|
 |---|---|---|---|
-|--major|-ma|"all"|Represents the major version of your app|
-|--minor|-mi|"all"|Represents the minor version of your app|
-|--patch|-p|"all"|Represents the patch version of your app|
+|--major|-ma|"*"|Represents the major version of your app|
+|--minor|-mi|"*"|Represents the minor version of your app|
+|--patch|-p|"*"|Represents the patch version of your app|
 |--user|-u|""|Represents a unique value, tied to a user (ie. an email)|
 |--expire|-e|""|A value when the license expires (ie. could be a date)|
 |--public|-pu|"public.key"|The name of the public key when generated|
 |--private|-pr|"private.key"|The name of the private key when generated|
 |--license|-l|"license.data"|The name of the license data file when generated|
 |--output|-o|process.cwd()|The path where the keys/license data file are generated to|
+|--private-key|-pk|null|The path to the private key|
+|--public-key|-pubk|null|The path to the public key|
 
 ### Samples
 Here are some examples of using some of the options in the command line.
