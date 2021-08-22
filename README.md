@@ -35,6 +35,7 @@ There are a number of options you can use to customize your license key generati
 |--output|-o|process.cwd()|The path where the keys/license data file are generated to|
 |--private-key|-pk|null|The path to the private key|
 |--public-key|-pubk|null|The path to the public key|
+|--valid-to|-vt|null|Set the time of license valid. Patterns: `years-<num>`, `months-<num>`, `days-<num>`, `hours-<num>`, `minutes-<num>`, `seconds-<num>`|
 
 ### Samples
 Here are some examples of using some of the options in the command line.
@@ -49,6 +50,10 @@ Here are some examples of using some of the options in the command line.
 
 ```shell
 > secure-electron-license-keys-cli --expire "2022-12-25" --user "uniqueuseremail@account.com"
+```
+
+```shell
+> secure-electron-license-keys-cli --expire "2022-12-25" --user "uniqueuseremail@account.com" --valid-to "months-6"
 ```
 
 > Note - you can also use the shorthand (ie. `selkc` instead of `secure-electron-license-keys-cli`)
