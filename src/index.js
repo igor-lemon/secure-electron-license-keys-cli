@@ -21,7 +21,7 @@ function parseArgumentsIntoOptions(rawArgs) {
         "--valid-to": String,
         "-ma": "--major",
         "-mi": "--minor",
-        "-p": "--patch",
+        "-pa": "--patch",
         "-u": "--user",
         "-e": "--expire",
         "-pu": "--public",
@@ -46,8 +46,8 @@ function parseArgumentsIntoOptions(rawArgs) {
         private: args["--private"] || "private.key",
         license: args["--license"] || "license.data",
         output: args["--output"] || process.cwd(),
-        privateKey: args["--private-key"] || null,
-        publicKey: args["--public-key"] || null,
+        privateKeyPath: args["--private-key"] || null,
+        publicKeyPath: args["--public-key"] || null,
         validTo: args["--valid-to"] || null,
     };
 }
@@ -126,11 +126,12 @@ export function cli(args) {
 
     const { privateKeyPath, publicKeyPath } = options
 
-    let privateKey, publicKey;
+    let privateKey, publicKey, usingExistingKeyPair = false;
 
     if (privateKeyPath && publicKeyPath) {
-        privateKey = fs.readFileSync(privateKeyPath);
-        publicKey = fs.readFileSync(publicKeyPath);
+        privateKey = fs.readFileSync(path.resolve(privateKeyPath));
+        publicKey = fs.readFileSync(path.resolve(publicKeyPath));
+        usingExistingKeyPair = true
     } else {
         // Generate a public/private keypair
         const certPair = crypto.generateKeyPairSync("rsa", cryptoKeyPairOptions);
@@ -146,12 +147,12 @@ export function cli(args) {
     const privateKeyFilePath = path.join(options.output, options.private);
     const licenseFilePath = path.join(options.output, options.license);
 
-    console.log(`Saving public key file to '${publicKeyFilePath}'.`);
+    console.log(`${usingExistingKeyPair ? 'Using' : 'Saving'} public key file at '${publicKeyFilePath}'.`);
     fs.writeFileSync(publicKeyFilePath, publicKey);
 
-    console.log(`Saving private key file to '${privateKeyFilePath}'.`);
+    console.log(`${usingExistingKeyPair ? 'Using' : 'Saving'} private key file at '${privateKeyFilePath}'.`);
     fs.writeFileSync(privateKeyFilePath, privateKey);
 
-    console.log(`Saving license file to '${licenseFilePath}'.`);
+    console.log(`Saving license file at '${licenseFilePath}'.`);
     fs.writeFileSync(licenseFilePath, encrypted);
 }
